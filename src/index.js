@@ -61,6 +61,12 @@ function route(url, replace = false) {
 		url = url.url;
 	}
 
+	// Check to see if we are allowing this route
+	if (!allowRoute(url)) {
+		// Return true to indicate we have handled this route.
+		return true;
+	}
+
 	// only push URL into history if we can handle it
 	if (canRoute(url)) {
 		setUrl(url, replace ? 'replace' : 'push');
@@ -71,10 +77,20 @@ function route(url, replace = false) {
 
 /** Check if the given URL can be handled by any router instances. */
 function canRoute(url) {
-	for (let i = ROUTERS.length; i--; ) {
+	for (let i = ROUTERS.length; i--;) {
 		if (ROUTERS[i].canRoute(url)) return true;
 	}
 	return false;
+}
+
+/** Check if the routers will allow the route */
+function allowRoute(url) {
+	for (let i = ROUTERS.length; i--;) {
+		if (ROUTERS[i].props.allowRoute && !ROUTERS[i].props.allowRoute()) {
+			return false;
+		}
+	}
+	return true;
 }
 
 /** Tell all router instances to handle the given URL.  */
@@ -255,7 +271,7 @@ assign(RouterProto, {
 			ctx.active = current ? [current] : [];
 
 			// notify useRouter subscribers outside this subtree:
-			for (let i = SUBS.length; i--; ) SUBS[i]({});
+			for (let i = SUBS.length; i--;) SUBS[i]({});
 
 			if (typeof onChange === 'function') {
 				onChange(ctx);

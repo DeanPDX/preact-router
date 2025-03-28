@@ -1,4 +1,4 @@
-import { Router, Link, route, Route } from 'preact-router';
+import { Router, Link, route, Route } from 'preact-cancellable-router';
 import { Match, Link as ActiveLink } from '../match/src';
 import { h, render } from 'preact';
 import { act } from 'preact/test-utils';
@@ -217,7 +217,7 @@ describe('dom', () => {
 		});
 	});
 
-	describe('preact-router/match', () => {
+	describe('preact-cancellable-router/match', () => {
 		describe('<Match>', () => {
 			it('should invoke child function with match status when routing', async () => {
 				let spy1 = jasmine.createSpy('spy1'),

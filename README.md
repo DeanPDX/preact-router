@@ -1,16 +1,16 @@
-# preact-router
+# preact-cancellable-router
 
-[![NPM](https://img.shields.io/npm/v/preact-router.svg)](https://www.npmjs.com/package/preact-router)
-[![Build status](https://github.com/preactjs/preact-router/actions/workflows/node.js.yml/badge.svg)](https://github.com/preactjs/preact-router/actions/workflows/node.js.yml)
+[![NPM](https://img.shields.io/npm/v/preact-cancellable-router.svg)](https://www.npmjs.com/package/preact-cancellable-router)
+[![Build status](https://github.com/preactjs/preact-cancellable-router/actions/workflows/node.js.yml/badge.svg)](https://github.com/preactjs/preact-cancellable-router/actions/workflows/node.js.yml)
 
 > [!WARNING]
-> `preact-router` unfortunately no longer sees active development! It's completely stable and so you can rely upon it for all existing apps, but for newer ones, we'd recommend using [`preact-iso`](https://github.com/preactjs/preact-iso) for your routing needs instead. It offers a very similar API while integrating a bit better Suspense and lazy loading, with potentially more useful hooks. Thanks to all the contributors and users over the years!
+> `preact-cancellable-router` unfortunately no longer sees active development! It's completely stable and so you can rely upon it for all existing apps, but for newer ones, we'd recommend using [`preact-iso`](https://github.com/preactjs/preact-iso) for your routing needs instead. It offers a very similar API while integrating a bit better Suspense and lazy loading, with potentially more useful hooks. Thanks to all the contributors and users over the years!
 
 Connect your [Preact](https://github.com/preactjs/preact) components up to that address bar.
 
-`preact-router` provides a `<Router />` component that conditionally renders its children when the URL matches their `path`. It also automatically wires up `<a />` elements to the router.
+`preact-cancellable-router` provides a `<Router />` component that conditionally renders its children when the URL matches their `path`. It also automatically wires up `<a />` elements to the router.
 
-> 💁 **Note:** This is not a preact-compatible version of React Router. `preact-router` is a simple URL wiring and does no orchestration for you.
+> 💁 **Note:** This is not a preact-compatible version of React Router. `preact-cancellable-router` is a simple URL wiring and does no orchestration for you.
 >
 > If you're looking for more complex solutions like nested routes and view composition, [react-router](https://github.com/ReactTraining/react-router) works great with preact as long as you alias in [preact/compat](https://preactjs.com/guide/v10/getting-started#aliasing-react-to-preact).
 
@@ -21,7 +21,7 @@ Connect your [Preact](https://github.com/preactjs/preact) components up to that 
 ### Usage Example
 
 ```js
-import Router from 'preact-router';
+import Router from 'preact-cancellable-router';
 import { h, render } from 'preact';
 /** @jsx h */
 
@@ -66,7 +66,7 @@ Parameters can be made optional by adding a `?`, or turned into a wildcard match
 
 ### Lazy Loading
 
-Lazy loading (code splitting) with `preact-router` can be implemented easily using the [AsyncRoute](https://www.npmjs.com/package/preact-async-route) module:
+Lazy loading (code splitting) with `preact-cancellable-router` can be implemented easily using the [AsyncRoute](https://www.npmjs.com/package/preact-async-route) module:
 
 ```js
 import AsyncRoute from 'preact-async-route';
@@ -86,13 +86,13 @@ import AsyncRoute from 'preact-async-route';
 
 ### Active Matching & Links
 
-`preact-router` includes an add-on module called `match` that lets you wire your components up to Router changes.
+`preact-cancellable-router` includes an add-on module called `match` that lets you wire your components up to Router changes.
 
 Here's a demo of `<Match>`, which invokes the function you pass it (as its only child) in response to any routing:
 
 ```js
-import Router from 'preact-router';
-import Match from 'preact-router/match';
+import Router from 'preact-cancellable-router';
+import Match from 'preact-cancellable-router/match';
 
 render(
   <div>
@@ -116,8 +116,8 @@ render(
 `<Link>` is just a normal link, but it automatically adds and removes an "active" classname to itself based on whether it matches the current URL.
 
 ```js
-import { Router } from 'preact-router';
-import { Link } from 'preact-router/match';
+import { Router } from 'preact-cancellable-router';
+import { Link } from 'preact-cancellable-router/match';
 
 render(
   <div>
@@ -141,7 +141,7 @@ render(
 
 ### Default Link Behavior
 
-Sometimes it's necessary to bypass preact-router's link handling and let the browser perform routing on its own.
+Sometimes it's necessary to bypass preact-cancellable-router's link handling and let the browser perform routing on its own.
 
 This can be accomplished by adding a `data-native` boolean attribute to any link:
 
@@ -155,7 +155,7 @@ The `Router` notifies you when a change event occurs for a route with the `onCha
 
 ```js
 import { render, Component } from 'preact';
-import { Router, route } from 'preact-router';
+import { Router, route } from 'preact-cancellable-router';
 
 class App extends Component {
   // some method that returns a promise
@@ -187,7 +187,7 @@ Can easily be implemented with a custom `Redirect` component;
 
 ```js
 import { Component } from 'preact';
-import { route } from 'preact-router';
+import { route } from 'preact-cancellable-router';
 
 export default class Redirect extends Component {
   componentWillMount() {
@@ -215,7 +215,7 @@ It's possible to use alternative history bindings, like `/#!/hash-history`:
 
 ```js
 import { h } from 'preact';
-import Router from 'preact-router';
+import Router from 'preact-cancellable-router';
 import { createHashHistory } from 'history';
 
 const Main = () => (
@@ -234,7 +234,7 @@ render(<Main />, document.body);
 It's possible to programmatically trigger a route to a page (like `window.location = '/page-2'`)
 
 ```js
-import { route } from 'preact-router';
+import { route } from 'preact-cancellable-router';
 
 route('/page-2'); // appends a history entry
 
@@ -247,7 +247,7 @@ The `<Router>` is a self-contained component that renders based on the page URL.
 
 ```js
 import { h, render } from 'preact';
-import Router from 'preact-router';
+import Router from 'preact-cancellable-router';
 
 function Profile(props) {
   // `props.rest` is the rest of the URL after "/profile/"
@@ -288,7 +288,7 @@ render(<App />, document.body);
 Alternatively to adding the router props (`path`, `default`) directly to your component, you may want to use the `Route` component we provide instead. This tends to appease TypeScript, while still passing down the routing props into your component for use.
 
 ```js
-import { Router, Route } from 'preact-router';
+import { Router, Route } from 'preact-cancellable-router';
 
 function App() {
   let users = getUsers();

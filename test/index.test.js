@@ -4,7 +4,7 @@ import { toBeCloneOf } from './utils/assert-clone-of';
 
 const sleep = ms => new Promise(r => setTimeout(r, ms));
 
-describe('preact-router', () => {
+describe('preact-cancellable-router', () => {
 	beforeAll(() => {
 		jasmine.addMatchers({ toBeCloneOf });
 	});
