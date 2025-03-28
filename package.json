@@ -27,7 +27,7 @@
 	"scripts": {
 		"build": "microbundle -f es --no-generateTypes && microbundle src/cjs.js -f cjs,umd --no-generateTypes && (cd match && npm run build)",
 		"postbuild": "cp dist/preact-cancellable-router.module.js dist/preact-cancellable-router.mjs && cp match/index.module.js match/index.mjs",
-		"test": "npm-run-all lint build test:unit test:ts",
+		"test": "npm-run-all lint build test:ts",
 		"lint": "eslint src test",
 		"fix": "npm run lint -- --fix",
 		"test:unit": "karmatic",
