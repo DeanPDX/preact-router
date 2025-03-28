@@ -7,9 +7,13 @@ class ClassComponent extends Component<{}, {}> {
 	}
 }
 
-const SomeFunctionalComponent: FunctionalComponent<{}> = ({}) => {
-	return <div></div>;
+
+const SomeFunctionalComponent: FunctionalComponent = (props) => {
+	return (
+		<p>Hello, World!</p>
+	);
 };
+
 
 function RouterWithComponents() {
 	return (
