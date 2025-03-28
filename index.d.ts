@@ -71,7 +71,7 @@ export function Route<Props>(
 ): preact.VNode;
 
 export function Link(
-	props: preact.JSX.HTMLAttributes<HTMLAnchorElement>
+	props: preact.JSX.AllHTMLAttributes<HTMLAnchorElement>
 ): preact.VNode;
 
 export function useRouter<
