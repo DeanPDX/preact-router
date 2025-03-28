@@ -49,7 +49,7 @@ export interface RouterProps<
 	static?: boolean;
 	url?: string;
 	onChange?: (args: RouterOnChangeArgs<RouteParams>) => void;
-	allowRoute?: () => boolean;
+	allowRoute?: (url: string) => boolean;
 }
 
 export class Router extends preact.Component<RouterProps, {}> {

@@ -86,7 +86,7 @@ function canRoute(url) {
 /** Check if the routers will allow the route */
 function allowRoute(url) {
 	for (let i = ROUTERS.length; i--;) {
-		if (ROUTERS[i].props.allowRoute && !ROUTERS[i].props.allowRoute()) {
+		if (ROUTERS[i].props.allowRoute && !ROUTERS[i].props.allowRoute(url)) {
 			return false;
 		}
 	}
